@@ -121,27 +121,27 @@ function barretReduction(x, n){
     return big.binaryToHex(barretReductionBin(x, n));
 }
 
-function modAdd(x, y, n) {
+function modAddBarret(x, y, n) {
     let sum = big.sum(x, y);
     return barretReduction(sum, n);
 }
 
-function modSub(x, y, n) {
+function modSubBarret(x, y, n) {
     let sub = big.sub(x, y);
     return barretReduction(sub, n);
 }
 
-function modMul(x, y, n) {
+function modMulBarret(x, y, n) {
     let mul = big.mul(x, y);
     return barretReduction(mul, n);
 }
 
-function modQuadraticMul(x,n) {
+function modQuadraticMulBarret(x,n) {
     let power = big.mul(x, x);
     return barretReduction(power, n);
 }
 
-function modPowerBarretBin(num1, num2, n) {
+function modPowerBarret(num1, num2, n) {
     let result = "1";
     let num2Bin = (big.hexToBinary(num2));
     let lastStep = num2Bin.length - 1;
@@ -168,7 +168,7 @@ function modPowerBarretBin(num1, num2, n) {
 //console.log(barretReductionBin("1111", "10"));
 
 console.time("djd");
-console.log(modPowerBarretBin('4D3C91C579C2C6216567A5241614B561ADDF76C4BB659E6FE7F65FF76A918C843F0458B3EF457BCD9022D78798A29462EC99C74E6674690267D3E9844251B39D', "ABCD12", 'DAF1ABDA4AD4D9FE3E36A529210C2AE99B905922FC0519798A26E351FE23AF375AD6BA288EE030B70DF0CE1CDF1E8B75BA56494DC6ED36B181814CD5783E6C81'));
+console.log(modPowerBarret('4D3C91C579C2C6216567A5241614B561ADDF76C4BB659E6FE7F65FF76A918C843F0458B3EF457BCD9022D78798A29462EC99C74E6674690267D3E9844251B39D', "ABCD12", 'DAF1ABDA4AD4D9FE3E36A529210C2AE99B905922FC0519798A26E351FE23AF375AD6BA288EE030B70DF0CE1CDF1E8B75BA56494DC6ED36B181814CD5783E6C81'));
 console.timeEnd("djd");
 
 
